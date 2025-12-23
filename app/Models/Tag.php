@@ -2,18 +2,17 @@
 
 namespace App\Models;
 
+use App\Models\Job;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use App\Models\Blog;
 
 class Tag extends Model
 {
     /** @use HasFactory<\Database\Factories\TagFactory> */
     use HasFactory;
 
-    public function blogs(): BelongsToMany
-    {
-        return $this->belongsToMany(Blog::class)->withTimestamps();
+    public function jobs(): BelongsToMany {
+        return $this->belongsToMany(Job::class, relatedPivotKey: 'job_listing_id')->withTimestamps();
     }
 }
