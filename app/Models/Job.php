@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class Job extends Model
 {
     protected $table = 'job_listings';
-    protected $fillable = ['name', 'salary'];
+    protected $fillable = ['name', 'salary', 'employer_id'];
 
     use HasFactory;
 

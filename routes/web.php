@@ -20,6 +20,14 @@ Route::get('/jobs/{id}', function ($id) {
     return view('jobs.show', ['job' => Job::find($id)]);
 });
 
+Route::post('/jobs', function () {
+    Job::create([
+        'name' => request('title'),
+        'salary' => '$' . number_format(request('salary')),
+        'employer_id' => 1
+    ]);
+});
+
 Route::get('/contact', function () {
     return view('contact');
 });
