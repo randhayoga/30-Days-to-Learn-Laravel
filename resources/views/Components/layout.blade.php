@@ -17,14 +17,20 @@
                         <img src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company" class="size-8" />
                     </div>
                     <div class="hidden md:block">
-                        <div class="ml-10 flex items-baseline space-x-4">
-                        <!-- Current: "bg-gray-950/50 text-white", Default: "text-gray-300 hover:bg-white/5 hover:text-white" -->
+                        <div class="ml-10 flex">
                             <x-nav-link href="{{ url('/') }}" :active="request()->is('/') ? true : false">Home</x-nav-link>
                             <x-nav-link href="{{ url('/jobs') }}" :active="request()->is('jobs') ? true : false">Jobs</x-nav-link>
                             <x-nav-link href="{{ url('/contact') }}" :active="request()->is('contact') ? true : false">Contact</x-nav-link>
-                            <x-nav-link href="{{ url('/login') }}" :active="request()->is('login') ? true : false">Login</x-nav-link>
                         </div>
                     </div>
+                    @guest
+                    <div class="hidden md:block">
+                        <div class="ml-196 flex">
+                            <x-nav-link href="{{ url('/login') }}" :active="request()->is('login') ? true : false">Log In</x-nav-link>
+                            <x-nav-link href="{{ url('/register') }}" :active="request()->is('register') ? true : false">Register</x-nav-link>
+                        </div>
+                    </div>                       
+                    @endguest
                     <div class="-mr-2 flex md:hidden">
                     <!-- Mobile menu button -->
                     <button type="button" command="--toggle" commandfor="mobile-menu" class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-white/5 hover:text-white focus:outline-2 focus:outline-offset-2 focus:outline-indigo-500">
@@ -47,6 +53,7 @@
                     <x-nav-link href="{{ url('/jobs') }}" :active="request()->is('jobs') ? true : false">Jobs</x-nav-link>
                     <x-nav-link href="{{ url('/contact') }}" :active="request()->is('contact') ? true : false">Contact</x-nav-link>
                     <x-nav-link href="{{ url('/login') }}" :active="request()->is('login') ? true : false">Login</x-nav-link>
+                    <x-nav-link href="{{ url('/register') }}" :active="request()->is('register') ? true : false">Register</x-nav-link>
                 </div>
             </el-disclosure>
         </nav>
