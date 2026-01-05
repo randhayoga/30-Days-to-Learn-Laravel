@@ -29,8 +29,18 @@
                             <x-nav-link href="{{ url('/login') }}" :active="request()->is('login') ? true : false">Log In</x-nav-link>
                             <x-nav-link href="{{ url('/register') }}" :active="request()->is('register') ? true : false">Register</x-nav-link>
                         </div>
-                    </div>                       
+                    </div>
                     @endguest
+                    @auth
+                    <div class="hidden md:block">
+                        <div class="ml-215 flex">
+                            <form action="/logout" method="POST">
+                                @csrf
+                                <x-form-button>Log out</x-form-button>
+                            </form>
+                        </div>
+                    </div>                       
+                    @endauth
                     <div class="-mr-2 flex md:hidden">
                     <!-- Mobile menu button -->
                     <button type="button" command="--toggle" commandfor="mobile-menu" class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-white/5 hover:text-white focus:outline-2 focus:outline-offset-2 focus:outline-indigo-500">
