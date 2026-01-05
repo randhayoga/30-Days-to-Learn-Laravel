@@ -9,7 +9,7 @@ class JobController extends Controller
 {
     public function index()
     {
-        $jobs = Job::with('employer')->paginate(5);
+        $jobs = Job::with('employer')->orderBy('created_at', 'desc')->paginate(5);
         return view('jobs.index', ['jobs' => $jobs]);
     }
 
@@ -30,6 +30,8 @@ class JobController extends Controller
             'salary' => '$' . number_format(request('salary')),
             'employer_id' => 1
         ]);
+
+        return redirect('/jobs');
     }
 
     public function show(Job $job)
