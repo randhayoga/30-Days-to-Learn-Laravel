@@ -5,6 +5,13 @@ use App\Models\Job;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\RegisteredUserController;
 use App\Http\Controllers\AuthenticatedSessionController;
+use App\Jobs\TranslateJob;
+
+Route::get('/test', function() {
+    $job = Job::first();
+    TranslateJob::dispatch($job);
+    return 'Done';
+});
 
 Route::view('/', 'index');
 Route::view('/contact', 'contact');
