@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $heading }}</title>
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module"></script>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="h-full">
     <div class="min-h-full">
@@ -70,7 +69,7 @@
 
         <header class="relative bg-gray-800 after:pointer-events-none after:absolute after:inset-x-0 after:inset-y-0 after:border-y after:border-white/10">
             <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 sm:flex sm:justify-between">
-                <h1 class="text-3xl font-bold tracking-tight text-white">{{ $heading }}</h1>
+                <h1 class="text-3xl font-bold tracking-tight text-brand-purple">{{ $heading }}</h1>
                 <x-button href="/jobs/create">Create Job</x-button>
             </div>
         </header>
